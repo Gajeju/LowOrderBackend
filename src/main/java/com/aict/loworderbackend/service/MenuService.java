@@ -24,28 +24,23 @@ public class MenuService {
         return menuRepository.findByStoreId(storeId);
     }
 
+    // 메뉴 조회 by ID
+    public Optional<Menu> getMenuById(Long menuId) {
+        return menuRepository.findById(menuId);
+    }
+
     // 메뉴 저장
     public Menu createMenu(Menu menu) {
         return menuRepository.save(menu);
     }
 
-    // 메뉴 수정
-    public Menu updateMenu(Long menuId, Menu menuDetails) {
-        Menu menu = menuRepository.findById(menuId)
-                .orElseThrow(() -> new RuntimeException("Menu not found"));
-
-        menu.setMenuName(menuDetails.getMenuName());
-        menu.setMenuType(menuDetails.getMenuType());
-        menu.setPrice(menuDetails.getPrice());
-
+    // 메뉴 업데이트
+    public Menu updateMenu(Menu menu) {
         return menuRepository.save(menu);
     }
 
     // 메뉴 삭제
     public void deleteMenu(Long menuId) {
-        Menu menu = menuRepository.findById(menuId)
-                .orElseThrow(() -> new RuntimeException("Menu not found"));
-
-        menuRepository.delete(menu);
+        menuRepository.deleteById(menuId);
     }
 }

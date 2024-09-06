@@ -7,7 +7,7 @@ public class Menu {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // 자동 증가 설정
-    private Long menu_id;
+    private Long menuId;
 
     @Column(name = "store_id", nullable = false)
     private Long storeId;
@@ -23,12 +23,13 @@ public class Menu {
 
     // Getters and Setters
 
-    public Long getMenu_id() {
-        return menu_id;
+
+    public Long getMenuId() {
+        return menuId;
     }
 
-    public void setMenu_id(Long menu_id) {
-        this.menu_id = menu_id;
+    public void setMenuId(Long menuId) {
+        this.menuId = menuId;
     }
 
     public Long getStoreId() {
@@ -66,7 +67,7 @@ public class Menu {
     @Override
     public String toString() {
         return "Menu{" +
-                "menu_id=" + menu_id +
+                "menu_id=" + menuId +
                 ", storeId=" + storeId +
                 ", menuName='" + menuName + '\'' +
                 ", menuType='" + menuType + '\'' +
