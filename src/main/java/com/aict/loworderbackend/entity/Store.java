@@ -6,21 +6,24 @@ import jakarta.persistence.*;
 public class Store {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long store_id;
+    private Long storeId;
 
     @Column(name = "login_id")  // 데이터베이스 컬럼 명시
     private String loginId;
+
+    @Column(name = "store_name")  // 데이터베이스 컬럼 명시
+    private String storeName;
 
     private String password;
 
     // Getters and Setters
 
-    public Long getStore_id() {
-        return store_id;
+    public Long getStoreId() {
+        return storeId;
     }
 
-    public void setStore_id(Long store_id) {
-        this.store_id = store_id;
+    public void setStoreId(Long storeId) {
+        this.storeId = storeId;
     }
 
     public String getLoginId() {
@@ -29,6 +32,14 @@ public class Store {
 
     public void setLoginId(String loginId) {
         this.loginId = loginId;
+    }
+
+    public String getStoreName() {
+        return storeName;
+    }
+
+    public void setStoreName(String storeName) {
+        this.storeName = storeName;
     }
 
     public String getPassword() {
