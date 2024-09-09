@@ -4,20 +4,29 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "store")
 public class Store {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long storeId;
 
-    @Column(name = "login_id")  // 데이터베이스 컬럼 명시
+    @Column(name = "login_id")
     private String loginId;
 
-    @Column(name = "store_name")  // 데이터베이스 컬럼 명시
+    @Column(name = "store_name")
     private String storeName;
 
     private String password;
 
-    // Getters and Setters
+    // 기본 생성자 (필수, JPA가 엔티티를 로드할 때 필요)
+    public Store() {
+    }
 
+    // storeId만 초기화하는 생성자
+    public Store(Long storeId) {
+        this.storeId = storeId;
+    }
+
+    // Getters and Setters
     public Long getStoreId() {
         return storeId;
     }

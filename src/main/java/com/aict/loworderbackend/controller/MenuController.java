@@ -42,7 +42,6 @@ public class MenuController {
     }
 
     // 메뉴 수정
-    // 메뉴 수정
     @PutMapping("/{menuId}")
     public ResponseEntity<Menu> updateMenu(@PathVariable Long menuId, @RequestBody Menu menuDetails) {
         Optional<Menu> optionalMenu = menuService.getMenuById(menuId);
@@ -63,7 +62,6 @@ public class MenuController {
         }
     }
 
-    // 메뉴 삭제
     // 메뉴 삭제
     @DeleteMapping("/{menuId}")
     public ResponseEntity<?> deleteMenu(@PathVariable Long menuId) {
