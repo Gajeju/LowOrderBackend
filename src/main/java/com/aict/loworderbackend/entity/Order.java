@@ -22,6 +22,9 @@ public class Order {
     @Column(name = "order_time", nullable = false)
     private LocalDateTime orderTime;
 
+    @Column(name = "complete", nullable = true)
+    private Integer complete;
+
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderDetail> orderDetails = new ArrayList<>();
 
@@ -65,6 +68,14 @@ public class Order {
 
     public void setOrderDetails(List<OrderDetail> orderDetails) {
         this.orderDetails = orderDetails;
+    }
+
+    public int getComplete() {
+        return complete;
+    }
+
+    public void setComplete(int complete) {
+        this.complete = complete;
     }
 
     @Override

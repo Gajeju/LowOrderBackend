@@ -1,5 +1,6 @@
 package com.aict.loworderbackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,6 +13,7 @@ public class OrderDetail {
 
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)  // 'orders' 테이블을 참조
+    @JsonIgnore
     private Order order;
 
     @Column(name = "menu_name", nullable = false)

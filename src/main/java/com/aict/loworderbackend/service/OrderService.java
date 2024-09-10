@@ -6,15 +6,12 @@ import com.aict.loworderbackend.entity.Order;
 import com.aict.loworderbackend.entity.OrderDetail;
 import com.aict.loworderbackend.repository.OrderRepository;
 import com.aict.loworderbackend.repository.OrderDetailRepository;
-import org.apache.catalina.Store;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderService {
@@ -53,7 +50,7 @@ public class OrderService {
             totalPrice += detailRequest.getPrice() * detailRequest.getQuantity();
 
             // 5. OrderDetail 저장
-            orderDetailRepository.save(detail);
+             orderDetailRepository.save(detail);
         }
 
         // 6. 총합을 Order에 설정하고 업데이트
@@ -64,18 +61,21 @@ public class OrderService {
         return savedOrder;
     }
 
-    // 모든 주문 조회
-    public List<Order> findAllOrders() {
-        return orderRepository.findAll();
-    }
-
     // 특정 가게(store_id)의 모든 주문 조회
     public List<Order> findOrdersByStoreId(Long storeId) {
         return orderRepository.findOrdersByStoreId(storeId);
     }
 
-    // 특정 주문 ID로 주문 상세 조회
-    public Order findOrderById(Long orderId) {
-        return orderRepository.findById(orderId).orElseThrow(() -> new RuntimeException("Order not found"));
+    public boolean updateOrderComplete(Long orderId) {
+        Optional<Order> optionalOrder = orderRepository.findById(orderId);
+        if (optionalOrder.isPresent()) {
+            Order order = optionalOrder.get();
+            order.setComplete(1); // complete를 1로 설정
+            orderRepository.save(order); // 저장
+            return true;
+        } else {
+            return false; // 주문을 찾지 못한 경우
+        }
     }
+
 }
