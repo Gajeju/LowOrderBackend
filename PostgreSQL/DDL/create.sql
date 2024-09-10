@@ -6,7 +6,7 @@ CREATE TABLE store (
                        address VARCHAR NOT NULL,
                        tel VARCHAR NULL,
                        buz_no VARCHAR NULL,
-                       store_type TEXT[] NOT NULL,
+                       store_type varchar NOT NULL,
                        login_id VARCHAR NOT NULL,
                        password VARCHAR NOT NULL
 );

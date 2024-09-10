@@ -70,7 +70,7 @@ public class Order {
         this.orderDetails = orderDetails;
     }
 
-    public int getComplete() {
+    public Integer getComplete() {
         return complete;
     }
 

@@ -11,4 +11,6 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     // 특정 가게의 모든 주문 조회
     @Query("SELECT o FROM Order o WHERE o.storeId = :storeId")
     List<Order> findOrdersByStoreId(@Param("storeId") Long storeId);
+
+    List<Order> findByStoreId(Long storeId);
 }

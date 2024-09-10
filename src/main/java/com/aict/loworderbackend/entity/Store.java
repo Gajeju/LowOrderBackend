@@ -17,6 +17,9 @@ public class Store {
 
     private String password;
 
+    @Column(name = "store_type")
+    private String storeType;
+
     // 기본 생성자 (필수, JPA가 엔티티를 로드할 때 필요)
     public Store() {
     }
@@ -57,5 +60,13 @@ public class Store {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getStoreType() {
+        return storeType;
+    }
+
+    public void setStoreType(String storeType) {
+        this.storeType = storeType;
     }
 }
